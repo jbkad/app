@@ -1,43 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="bootstrap.css">
+        <!-- <link href="" rel="stylesheet"> -->
+        <!-- <link rel="icon" type="image/png" href="favicon.png"> -->
+        <!-- mini logo for browser -->
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        <title>Country Game</title>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary header">
+            <div class="container-fluid">
+                <a class="navbar-brand">Geoland Games 🌍</a>
+                <!-- <a class="navbar-brand" href="https://www.google.com">Geography Quiz Game 🌍</a> -->
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+                <h6 class="text-muted">Guess The Flag Edition</h6>
+        </nav>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+            
+            
+        <div class="container">
+
+            <div class="wrapper items-center">
+                <div class="score-item child">
+                    <span class="badge rounded-pill bg-primary">Score</span> 
+                <!-- <span class="badge rounded-pill bg-primary">Score:{score}</span>  -->
+                </div>
+
+                <div class="timer-items child">
+                    <span class="badge rounded-pill bg-light">
+                    <span id="minutes">00</span>
+                    <span id="timer-colon">:</span>
+                    <span id="seconds">00</span>
+                </div>
+            </div>
+
+            <br>
+            
+            <h3 class="items-center text-danger">*INSERT FlagAPI here*</h3>
+
+            <div class="items-center">
+                <button type="button" class="btn btn-warning">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="black" class="bi bi-pause-fill" viewBox="0 0 16 16">
+                            <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/>
+                        </svg>
+                </button>
+
+                <button type="button" class="btn btn-light">
+                    <span class="timer-icons">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-skip-end" viewBox="0 0 16 16">
+                            <path d="M12.5 4a.5.5 0 0 0-1 0v3.248L5.233 3.612C4.713 3.31 4 3.655 4 4.308v7.384c0 .653.713.998 1.233.696L11.5 8.752V12a.5.5 0 0 0 1 0V4zM5 4.633 10.804 8 5 11.367V4.633z"/>
+                        </svg>     
+                    </span>                       
+                </button> 
+                
+                <button type="button" class="btn btn-danger">
+                    <span class="timer-icons">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="black" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            
+            <div class="form-group items-center">
+                <label for="answers" class="form-label mt-4">Enter Answer:</label>
+                <input type="text" class="form-control">
+                <small class="form-text text-muted">No Cheating!</small>
+            </div>
+
+            <br>
+                        
+            <div class="game-buttons items-center">
+                <button class="btn btn-primary" id="startGame">Play Quiz</button>
+            </div>
+
+        </div>
+
+        <!-- <script src="/app/src/App.tsx"></script> -->
+                        
+    </body>
 </html>
