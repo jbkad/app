@@ -1,5 +1,3 @@
-import React from 'react';
-
 // //set minutes
 // let mins = 15;
   

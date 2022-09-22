@@ -1,57 +1,52 @@
-import React, {useState} from 'react';
-import flagAPI from './seedAPI';
+import React, {useEffect, useState} from 'react';
+// components
+import Header from './components/Header'
+import Game from './components/Game'
+// helpers
+import quizQuestions from './functions/quizQuestions';
 
-// export default function App() {
-// export default function App:any() {
-// export default function App: any() => {
   export const App:React.FC = () => {
-    //React.FC = react function component(data type).
 
+  const [loading, setLoading] = useState(false);
+  const [score, setScore] = useState(0);
+  const [gameOver, setGameOver] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [question, setQuestion] = useState(null)
+  const [answers, setAnswers] = useState([]);
 
-//   const [loading, setLoading] = useState(false);
-//   const [score, setScore] = useState(0);
-//   const [gameOver, setGameOver] = useState(false);
+  useEffect(() => {
 
-//   const [questions, setQuestions] = useState([]);
-//   const [answers, setAnswers] = useState([]);
+    async function startGame () {
+      // reset the game
+      setLoading(true)
+      setScore(0)
+      setGameOver(false)
 
+      // get the questions
+      const newQuestions = await quizQuestions()
+      setQuestions(newQuestions)
 
-//   function startGame(){
-//     let setLoading:boolean = true;
-//     let setGameOver:boolean = false;
-//     const newQuestions = await quizQuestions();
+      //start the game
+      setLoading(false)
+    }
 
-//     setScore(0);
+    startGame()
 
-//   }
+  }, [])
 
- 
-    
-//   function getRandomCountry(){
-
-// // alternative solution:
-//   const shuffle = (array: any[]) =>
-//   [...array].sort(() => Math.random() - 0.5);
-
-//   const keys = Object.keys(flagAndCountry)
-//   newFlag = keys[Math.floor(Math.random() * keys.length)]
-//   document.getElementById('flag').src = newFlag
-//   console.log(newFlag)
-//   }
-
-//   function checkAnswer() {
-//     let userInput = document.getElementById("country").value).toLowerCase()
-//     let answer = (flagAndCountry[newFlag]).toLowerCase()
-//     let isCorrect = userInput === answer
-//     console.log(userInput,answer, isCorrect )
-//       if(isCorrect){
-//         getRandomCountry()
-//         document
-//       }
-//   }
+  function newQuestion () {
+    const idx = Math.floor(Math.random()*questions.length)
+    setQuestion(questions.splice(idx, 1)[0])
+  }
 
   return (
-     <p>App.tsx is connected</p>
+    <div>
+      <Header />
+      <button onClick={newQuestion}>Next</button>
+      <Game
+        question={question}
+      />
+    </div>
     //  <Controls />
      /* <button className='playQuiz-btn' onClick={startGame}>
        PlayQuiz
