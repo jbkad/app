@@ -14,8 +14,7 @@ import quizQuestions from './functions/quizQuestions';
   let [score, setScore] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [questions, setQuestions] = useState([]);
-  const [question, setQuestion] = useState(null)
-  const [answers, setAnswers] = useState([]);
+  const [question, setQuestion] = useState(null);
 
   useEffect(() => {
 
@@ -58,8 +57,8 @@ import quizQuestions from './functions/quizQuestions';
         <div className="items-center container">
           <Score score={score} />
         <br></br>
-          <Timer />
-        <br></br>
+          {/* <Timer />
+        <br></br> */}
           <Game question={question} />
         <br></br>
           <button onClick={newQuestion} className="btn btn-light skip-btn">
