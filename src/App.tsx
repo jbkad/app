@@ -38,23 +38,13 @@ import quizQuestions from './functions/quizQuestions';
 
   }, [])
 
-  const checkAnswer = (e: any) => {
-    if (!gameOver) {
-      // User's answer
-      const userAnswer = e.currentTarget.value
-      // Check answer against correct answer
-      const correctAnswer = (question.name.common) == userAnswer;
-      // Add score if answer is correct
-      if (correctAnswer) {
-        score++
-        return 'Correct!'
-        setTimeout(() => {
-          (newQuestion)
-        }, 2000) 
-      } else {
-        return 'Try again!'
-      }
+  const checkAnswer = (question: any, userAnswer: string) => {
+    const correct: boolean = question.name.common == userAnswer
+    if (correct) {
+      setScore(score + 1)
+      newQuestion()
     }
+    return correct
   };
 
   function newQuestion () {
@@ -66,15 +56,17 @@ import quizQuestions from './functions/quizQuestions';
     <>
       <Header />
         <div className="items-center container">
-          <Score />
+          <Score score={score} />
         <br></br>
           <Timer />
         <br></br>
           <Game question={question} />
         <br></br>
-          <button onClick={newQuestion} className="btn btn-light skip-btn">Skip</button>
+          <button onClick={newQuestion} className="btn btn-light skip-btn">
+            {Boolean(question) ? 'Skip' : 'Start'}
+          </button>
         <br></br>
-          <Answers />
+          <Answers question={question} checkAnswer={checkAnswer} />
         </div>
         </>
   );
